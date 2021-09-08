@@ -3,15 +3,18 @@ package demo.store.serviceproduct.service;
 import demo.store.serviceproduct.entity.Category;
 import demo.store.serviceproduct.entity.Product;
 import demo.store.serviceproduct.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class ProductServiceImplement implements ProductService{
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public List<Product> listAllProducts() {
@@ -66,9 +69,9 @@ public class ProductServiceImplement implements ProductService{
         if(productDB == null){
             return null;
         }
-        //productDB.setStock(productDB.getStock() + quantity);
-        Double stock = productDB.getStock() + quantity;
-        productDB.setStock(stock);
+        productDB.setStock(productDB.getStock() + quantity);
+        //Double stock = productDB.getStock() + quantity;
+        //productDB.setStock(stock);
         return productRepository.save(productDB);
     }
 }
