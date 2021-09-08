@@ -34,7 +34,7 @@ public class ProductRepositoryMockTest {
 
         List<Product> founds = productRepository.findByCategory(product01.getCategory());
 
-        Assertions.assertEquals(founds.size(), 1);
+        Assertions.assertEquals(founds.size(), 3);
     }
 
 
